@@ -38,8 +38,8 @@
 <header class="sticky top-0 z-40 bg-slate-900 text-white shadow-md">
   <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
     <a href="#home" class="flex items-center gap-3">
-      <img src="assets/logo.png" alt="Aparajita Legal" class="h-10 w-auto object-contain" onerror="this.src='https://via.placeholder.com/120x40?text=LOGO'">
-      <span class="text-xl font-bold tracking-wide serif-font text-amber-400">APARAJITA LEGAL</span>
+      <img src="assets/Aprajita Legal logo.jpeg" alt="Aprajita Legal" class="h-10 w-auto object-contain" onerror="this.src='https://via.placeholder.com/120x40?text=LOGO'">
+      <span class="text-xl font-bold tracking-wide serif-font text-amber-400">APRAJITA LEGAL</span>
     </a>
     
     <!-- DESKTOP MENU (Visible on PC: md:flex) -->
@@ -165,7 +165,7 @@
     </div>
   </footer>
 
-  <!-- JAVASCRIPT LOGIC -->
+  <!-- JAVASCRIPT LOGIC 
   <script>
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzBvO056innZdlOeIyuhpUsaAQ7kQZlZRgMohP93rpD_LGg7bmkEQVdyXl83M_M2Y2SbQ/exec";
 
@@ -181,8 +181,7 @@
         acceptBCI();
       }
     });
-    <!-- window.addEventListener('DOMContentLoaded', () => { if (localStorage.getItem('bci_accepted') === 'true') acceptBCI(); }); -->
-
+    
     function toggleMobileMenu() {
     const menu = document.getElementById('mobileMenu');
     menu.classList.toggle('hidden');
@@ -226,6 +225,199 @@
         status.innerText = "Failed to submit. Please use the WhatsApp button.";
       } finally { btn.disabled = false; btn.innerText = "Submit Consultation"; }
     }
-  </script>
+  </script> -->
+  <!-- COMPLETE UNIFIED FRONTEND JAVASCRIPT -->
+<script>
+  // ====================================================================
+  // 1. CONFIGURATION & GLOBAL VARIABLES
+  // ====================================================================
+  // Paste your exact deployed Google Apps Script Web App URL below
+  const APPARAJITA_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzBvO056innZdlOeIyuhpUsaAQ7kQZlZRgMohP93rpD_LGg7bmkEQVdyXl83M_M2Y2SbQ/exec";
+
+  // ====================================================================
+  // 2. INITIALIZATION (Runs immediately after HTML rendering)
+  // ====================================================================
+  window.addEventListener('DOMContentLoaded', () => {
+    // Inject current system year (2026) into footer
+    const yearElement = document.getElementById("year");
+    if (yearElement) {
+      yearElement.textContent = new Date().getFullYear();
+    }
+
+    // Check Bar Council Disclaimer (BCI) acceptance state
+    if (localStorage.getItem('bci_accepted') === 'true') {
+      const bciModal = document.getElementById('bciModal');
+      if (bciModal) bciModal.classList.add('hidden');
+    }
+
+    // Attach dynamic submit listener to consultation form
+    const consultationForm = document.getElementById('consultationForm');
+    if (consultationForm) {
+      consultationForm.addEventListener('submit', handleFormSubmit);
+    }
+  });
+
+  // ====================================================================
+  // 3. UI TOGGLE FUNCTIONS (Mobile Menu & BCI Modal)
+  // ====================================================================
+  function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenu) {
+      mobileMenu.classList.toggle('hidden');
+    }
+  }
+
+  function acceptBCI() {
+    localStorage.setItem('bci_accepted', 'true');
+    const bciModal = document.getElementById('bciModal');
+    if (bciModal) {
+      bciModal.classList.add('hidden');
+    }
+  }
+
+  function toggleChat() {
+    const chatWindow = document.getElementById('chatWindow');
+    if (chatWindow) {
+      chatWindow.classList.toggle('hidden');
+    }
+  }
+
+  // ====================================================================
+  // 4. CONSULTATION FORM HANDLER (Routes type: "form" -> Backend Triage)
+  // ====================================================================
+  async function handleFormSubmit(event) {
+    event.preventDefault();
+
+    const nameInput = document.getElementById('clientName');
+    const phoneInput = document.getElementById('clientPhone');
+    const msgInput = document.getElementById('clientMessage');
+    const statusDiv = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('submitBtn');
+
+    const name = nameInput ? nameInput.value.trim() : '';
+    const phone = phoneInput ? phoneInput.value.trim() : '';
+    const message = msgInput ? msgInput.value.trim() : '';
+
+    if (!name || !phone || !message) {
+      if (statusDiv) {
+        statusDiv.className = "text-red-500 text-xs mt-2 font-semibold";
+        statusDiv.innerText = "Please fill in all required fields.";
+      }
+      return;
+    }
+
+    // UI Loading state
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Submitting Inquiry...";
+    }
+
+    try {
+      const response = await fetch(APPARAJITA_APPS_SCRIPT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify({
+          type: "form",
+          name: name,
+          phone: phone,
+          message: message
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.status === "success") {
+        if (statusDiv) {
+          statusDiv.className = "text-emerald-500 text-xs mt-2 font-semibold";
+          statusDiv.innerText = "✓ Request submitted! An advocate will review your matter and contact you shortly.";
+        }
+        // Clear input fields
+        if (nameInput) nameInput.value = '';
+        if (phoneInput) phoneInput.value = '';
+        if (msgInput) msgInput.value = '';
+      } else {
+        throw new Error(data.message || "Submission failed.");
+      }
+    } catch (error) {
+      if (statusDiv) {
+        statusDiv.className = "text-red-500 text-xs mt-2 font-semibold";
+        statusDiv.innerText = "Unable to submit inquiry. Please reach out via direct WhatsApp.";
+      }
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Schedule Consultation";
+      }
+    }
+  }
+
+  // ====================================================================
+  // 5. LIVE AI CHATBOT HANDLER (Routes type: "chat" -> Conversational AI)
+  // ====================================================================
+  async function sendChatMessage() {
+    const input = document.getElementById('chatInput');
+    const msgs = document.getElementById('chatMessages');
+    if (!input || !msgs) return;
+
+    const text = input.value.trim();
+    if (!text) return;
+
+    // 1. Render User Message in Chat Window
+    msgs.innerHTML += `<div class="bg-amber-600 text-white p-2.5 rounded-lg ml-auto max-w-[85%] shadow-sm text-xs mb-2">${escapeHtml(text)}</div>`;
+    input.value = '';
+    msgs.scrollTop = msgs.scrollHeight;
+
+    // 2. Render Temporary Typing Indicator
+    const typingId = 'typing-' + Date.now();
+    msgs.innerHTML += `<div id="${typingId}" class="bg-slate-200 text-slate-600 p-2.5 rounded-lg max-w-[85%] text-xs italic mb-2">AI Legal Assistant is typing...</div>`;
+    msgs.scrollTop = msgs.scrollHeight;
+
+    try {
+      // 3. Send request to Google Apps Script backend
+      const response = await fetch(APPARAJITA_APPS_SCRIPT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify({
+          type: "chat",
+          message: text
+        })
+      });
+
+      const data = await response.json();
+
+      // 4. Remove Typing Indicator
+      const typingElem = document.getElementById(typingId);
+      if (typingElem) typingElem.remove();
+
+      // 5. Format markdown bolding and line breaks in response text
+      let formattedReply = (data.reply || "Thank you for reaching out. Connect with our advocates for advice.")
+        .replace(/\n/g, '<br>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+      // 6. Render AI Reply
+      msgs.innerHTML += `<div class="bg-slate-100 text-slate-800 border border-slate-200 p-2.5 rounded-lg max-w-[85%] text-xs leading-relaxed shadow-sm mb-2">${formattedReply}</div>`;
+
+    } catch (error) {
+      const typingElem = document.getElementById(typingId);
+      if (typingElem) typingElem.remove();
+
+      msgs.innerHTML += `<div class="bg-red-50 text-red-700 p-2.5 rounded-lg max-w-[85%] text-xs mb-2">Connection error. Please message us directly via WhatsApp.</div>`;
+    }
+
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  // Keypress event handler: Allows pressing 'Enter' inside chat input to send message
+  function handleChatKeyPress(event) {
+    if (event.key === 'Enter') {
+      sendChatMessage();
+    }
+  }
+
+  // Security Helper: Escape special characters to prevent HTML/XSS injection
+  function escapeHtml(text) {
+    return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+</script>
 </body>
 </html>
