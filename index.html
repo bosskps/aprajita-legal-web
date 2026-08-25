@@ -227,7 +227,7 @@
     }
   </script> -->
   <!-- COMPLETE UNIFIED FRONTEND JAVASCRIPT -->
-<script>
+  <script>
   // ====================================================================
   // 1. CONFIGURATION & GLOBAL VARIABLES
   // ====================================================================
@@ -255,37 +255,37 @@
     if (consultationForm) {
       consultationForm.addEventListener('submit', handleFormSubmit);
     }
-  });
+    });
 
-  // ====================================================================
-  // 3. UI TOGGLE FUNCTIONS (Mobile Menu & BCI Modal)
-  // ====================================================================
-  function toggleMobileMenu() {
+    // ====================================================================
+    // 3. UI TOGGLE FUNCTIONS (Mobile Menu & BCI Modal)
+    // ====================================================================
+    function toggleMobileMenu() {
     const mobileMenu = document.getElementById('mobileMenu');
     if (mobileMenu) {
       mobileMenu.classList.toggle('hidden');
     }
-  }
+    }
 
-  function acceptBCI() {
+    function acceptBCI() {
     localStorage.setItem('bci_accepted', 'true');
     const bciModal = document.getElementById('bciModal');
     if (bciModal) {
       bciModal.classList.add('hidden');
     }
-  }
+    }
 
-  function toggleChat() {
+    function toggleChat() {
     const chatWindow = document.getElementById('chatWindow');
     if (chatWindow) {
       chatWindow.classList.toggle('hidden');
     }
-  }
+    }
 
-  // ====================================================================
-  // 4. CONSULTATION FORM HANDLER (Routes type: "form" -> Backend Triage)
-  // ====================================================================
-  async function handleFormSubmit(event) {
+    // ====================================================================
+    // 4. CONSULTATION FORM HANDLER (Routes type: "form" -> Backend Triage)
+    // ====================================================================
+    async function handleFormSubmit(event) {
     event.preventDefault();
 
     const nameInput = document.getElementById('clientName');
@@ -338,23 +338,23 @@
       } else {
         throw new Error(data.message || "Submission failed.");
       }
-    } catch (error) {
+      } catch (error) {
       if (statusDiv) {
         statusDiv.className = "text-red-500 text-xs mt-2 font-semibold";
         statusDiv.innerText = "Unable to submit inquiry. Please reach out via direct WhatsApp.";
       }
-    } finally {
+      } finally {
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.innerText = "Schedule Consultation";
       }
-    }
-  }
+      }
+      }
 
-  // ====================================================================
-  // 5. LIVE AI CHATBOT HANDLER (Routes type: "chat" -> Conversational AI)
-  // ====================================================================
-  async function sendChatMessage() {
+    // ====================================================================
+    // 5. LIVE AI CHATBOT HANDLER (Routes type: "chat" -> Conversational AI)
+    // ====================================================================
+    async function sendChatMessage() {
     const input = document.getElementById('chatInput');
     const msgs = document.getElementById('chatMessages');
     if (!input || !msgs) return;
@@ -397,27 +397,27 @@
       // 6. Render AI Reply
       msgs.innerHTML += `<div class="bg-slate-100 text-slate-800 border border-slate-200 p-2.5 rounded-lg max-w-[85%] text-xs leading-relaxed shadow-sm mb-2">${formattedReply}</div>`;
 
-    } catch (error) {
+      } catch (error) {
       const typingElem = document.getElementById(typingId);
       if (typingElem) typingElem.remove();
 
       msgs.innerHTML += `<div class="bg-red-50 text-red-700 p-2.5 rounded-lg max-w-[85%] text-xs mb-2">Connection error. Please message us directly via WhatsApp.</div>`;
-    }
+      }
 
-    msgs.scrollTop = msgs.scrollHeight;
-  }
+      msgs.scrollTop = msgs.scrollHeight;
+      }
 
-  // Keypress event handler: Allows pressing 'Enter' inside chat input to send message
-  function handleChatKeyPress(event) {
-    if (event.key === 'Enter') {
+      // Keypress event handler: Allows pressing 'Enter' inside chat input to send message
+      function handleChatKeyPress(event) {
+      if (event.key === 'Enter') {
       sendChatMessage();
-    }
-  }
+      }
+      }
 
-  // Security Helper: Escape special characters to prevent HTML/XSS injection
-  function escapeHtml(text) {
-    return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-  }
+      // Security Helper: Escape special characters to prevent HTML/XSS injection
+      function escapeHtml(text) {
+      return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      }
 </script>
 </body>
 </html>
