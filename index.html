@@ -1,84 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aprajita Legal | Legal Consultants & Advocates</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .no-scroll { overflow: hidden; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprajita Legal | Advocates & Legal Consultants</title>
+  
+  <!-- 1. BROWSER TAB LOGO (FAVICON) -->
+  <link rel="icon" type="image/jpeg" href="assets/Aprajita Legal logo.jpeg">
+
+  <!-- Tailwind CSS & Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, .serif-font { font-family: 'Playfair Display', serif; }
+    .no-scroll { overflow: hidden; }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-900 no-scroll">
+<body class="bg-slate-50 text-slate-800 antialiased no-scroll">
 
-    <!-- BAR COUNCIL OF INDIA (RULE 36) MANDATORY DISCLAIMER MODAL -->
-    <div id="bciModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-85 p-4">
-        <div class="bg-white rounded-xl max-w-2xl w-full p-8 shadow-2xl border-t-8 border-blue-950">
-            <h2 class="text-2xl font-bold text-blue-950 mb-4 tracking-tight">DISCLAIMER & LEGAL INTENT</h2>
-            <div class="text-xs text-slate-600 space-y-3 leading-relaxed mb-6">
-                <p>As per the rules of the <strong>Bar Council of India (Rule 36)</strong>, advocates and law firms are constrained from soliciting work or advertising in any form or manner.</p>
-                <p>By clicking <strong>"I AGREE"</strong>, the user acknowledges and confirms the following:</p>
-                <ul class="list-disc list-inside pl-2 space-y-1 text-slate-500">
-                    <li>There has been no advertisement, personal communication, solicitation, or inducement of any kind.</li>
-                    <li>The user wishes to gain information about Aparajita Legal for personal informational purposes.</li>
-                    <li>Information requested or received does not establish an attorney-client relationship.</li>
-                </ul>
-            </div>
-            <div class="flex justify-end space-x-3">
-                <button onclick="declineBCI()" class="px-5 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold rounded-lg text-xs transition">Decline</button>
-                <button onclick="acceptBCI()" class="px-6 py-2.5 bg-blue-950 hover:bg-blue-900 text-white font-semibold rounded-lg text-xs transition shadow-md">I AGREE</button>
-            </div>
-        </div>
+  <!-- 2. BCI RULE 36 MANDATORY DISCLAIMER MODAL -->
+  <div id="bciModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/90 backdrop-blur-sm p-4">
+    <div class="max-w-2xl bg-white rounded-lg shadow-2xl p-6 md:p-8 border-t-4 border-amber-600">
+      <h2 class="text-2xl font-bold text-slate-900 mb-4 serif-font">Disclaimer & Confirmation</h2>
+      <p class="text-xs text-slate-600 leading-relaxed mb-4">
+        As per the rules of the Bar Council of India, law firms are not permitted to solicit work or advertise. By clicking <strong>"I Agree"</strong>, you acknowledge that you are seeking information regarding <strong>Aparajita Legal</strong> of your own accord and that there has been no form of solicitation, advertisement, or inducement by the firm or its members.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-end mt-6">
+        <button onclick="declineBCI()" class="px-5 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded border">Decline</button>
+        <button onclick="acceptBCI()" class="px-6 py-2 text-xs font-semibold text-white bg-slate-900 hover:bg-amber-700 rounded transition">I Agree & Proceed</button>
+      </div>
     </div>
+  </div>
 
-    <!-- NAVBAR -->
-    <nav class="bg-blue-950 text-white shadow-lg sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <div class="h-9 w-9 bg-amber-600 rounded-md flex items-center justify-center font-bold text-lg">A</div>
-                <span class="text-xl font-bold tracking-wider">APARAJITA LEGAL</span>
-            </div>
-            <div class="hidden md:flex space-x-8 text-sm font-medium">
-                <a href="#about" class="hover:text-amber-500 transition">About</a>
-                <a href="#practices" class="hover:text-amber-500 transition">Practice Areas</a>
-                <a href="#consult" class="px-4 py-2 bg-amber-600 hover:bg-amber-500 text-white rounded-lg transition">Request Consultation</a>
-            </div>
+  <!-- 3. HEADER & NAVIGATION BAR WITH LOGO -->
+  <header class="sticky top-0 z-40 bg-slate-900 text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <!-- BODY SECTION LOGO -->
+        <img src="assets/Aprajita Legal logo.jpeg" alt="Aprajita Legal Logo" class="h-12 w-auto object-contain" onerror="this.src='https://via.placeholder.com/150x50?text=APARAJITA+LEGAL'">
+        <span class="text-xl font-bold tracking-wide serif-font text-amber-400">APRAJITA LEGAL</span>
+      </a>
+      
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#about" class="hover:text-amber-400 transition">About Firm</a>
+        <a href="#practices" class="hover:text-amber-400 transition">Practice Areas</a>
+        <a href="#consultation" class="hover:text-amber-400 transition">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 4. HERO SECTION -->
+  <section class="bg-slate-900 text-white border-t border-slate-800 py-20 md:py-28 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl md:text-6xl font-bold text-amber-400 mb-6 serif-font leading-tight">Advocates & Legal Consultants</h1>
+      <p class="text-lg md:text-xl text-slate-300 font-light mb-8 max-w-2xl mx-auto">
+        Delivering strategic, rigorous, and result-oriented legal counsel for individuals, corporate entities, and institutions across India.
+      </p>
+      <a href="#consultation" class="inline-block bg-amber-600 hover:bg-amber-700 text-white font-semibold text-sm px-8 py-3.5 rounded shadow-lg transition">
+        Request Confidential Consultation
+      </a>
+    </div>
+  </section>
+
+  <!-- 5. PRACTICE AREAS SECTION -->
+  <section id="practices" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-slate-900 serif-font">Key Practice Areas</h2>
+      <div class="w-16 h-1 bg-amber-600 mx-auto mt-2"></div>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white p-6 rounded border border-slate-200 shadow-sm hover:shadow-md transition">
+        <h3 class="text-xl font-bold text-slate-900 mb-2 serif-font">Civil & Commercial Litigation</h3>
+        <p class="text-xs text-slate-600 leading-relaxed">Representation before High Courts and District Courts in property disputes, recovery suits, and breach of contracts.</p>
+      </div>
+      <div class="bg-white p-6 rounded border border-slate-200 shadow-sm hover:shadow-md transition">
+        <h3 class="text-xl font-bold text-slate-900 mb-2 serif-font">Corporate Counsel & Compliance</h3>
+        <p class="text-xs text-slate-600 leading-relaxed">Drafting commercial agreements, regulatory compliance audit, corporate governance, and transaction advisory.</p>
+      </div>
+      <div class="bg-white p-6 rounded border border-slate-200 shadow-sm hover:shadow-md transition">
+        <h3 class="text-xl font-bold text-slate-900 mb-2 serif-font">Constitutional & Writ Matters</h3>
+        <p class="text-xs text-slate-600 leading-relaxed">Handling Special Leave Petitions, fundamental rights enforcement, and administrative law challenges.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. INTAKE FORM (CLEAN FRONTEND, NO AI MENTIONS) -->
+  <section id="consultation" class="py-16 bg-slate-100 border-t border-slate-200">
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="bg-white p-8 rounded shadow border border-slate-200">
+        <h2 class="text-2xl font-bold text-slate-900 mb-2 serif-font text-center">Schedule Consultation</h2>
+        <p class="text-xs text-slate-500 text-center mb-6">Submit your inquiry details securely below. An advocate will review your matter.</p>
+        
+        <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Full Name *</label>
+            <input type="text" id="userName" required class="w-full px-4 py-2 text-xs border rounded focus:ring-2 focus:ring-amber-600 outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Phone / WhatsApp Number *</label>
+            <input type="tel" id="userPhone" required class="w-full px-4 py-2 text-xs border rounded focus:ring-2 focus:ring-amber-600 outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Brief Description of Legal Grievance *</label>
+            <textarea id="userMessage" rows="4" required class="w-full px-4 py-2 text-xs border rounded focus:ring-2 focus:ring-amber-600 outline-none"></textarea>
+          </div>
+          <button type="submit" id="submitBtn" class="w-full bg-slate-900 hover:bg-amber-700 text-white font-semibold text-xs py-3 rounded transition">
+            Submit Case Request
+          </button>
+        </form>
+        <p id="statusMsg" class="mt-4 text-center text-xs font-bold"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FOOTER WITH DIRECT WHATSAPP & GMAIL ACTION ICONS -->
+  <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-white font-bold text-base mb-3 serif-font">Aprajita Legal</h3>
+        <p class="text-xs leading-relaxed">Commitment to legal integrity, confidentiality, and legal excellence.</p>
+      </div>
+      
+      <!-- DIRECT ACTION LINKS -->
+      <div>
+        <h3 class="text-white font-bold text-base mb-3 serif-font">Direct Contact</h3>
+        <div class="space-y-3 text-xs">
+          <!-- WhatsApp Direct Chat Link -->
+          <a href="https://wa.me/919580451940?text=Hello%20Aparajita%20Legal,%20I%20would%20like%20to%20schedule%20a%20consultation." target="_blank" class="flex items-center gap-2 hover:text-amber-400 transition">
+            <svg class="w-4 h-4 fill-current text-green-500" viewBox="0 0 24 24"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.76.459 3.474 1.333 4.988l-1.417 5.176 5.297-1.39c1.458.797 3.097 1.216 4.773 1.217h.004c5.506 0 9.989-4.478 9.99-9.984 0-2.669-1.038-5.176-2.925-7.065-1.888-1.887-4.397-2.926-7.065-2.926z"/></svg>
+            Chat on WhatsApp (+91 9580451940)
+          </a>
+          <!-- Gmail Direct Mailto Link -->
+          <a href="mailto:jishu1703@gmail.com?subject=Legal%20Inquiry%20Consultation" class="flex items-center gap-2 hover:text-amber-400 transition">
+            <svg class="w-4 h-4 fill-current text-red-500" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            Email: jishu1703@gmail.com
+          </a>
         </div>
-    </nav>
+      </div>
 
-    <!-- HERO SECTION -->
-    <header class="bg-white border-b py-20">
-        <div class="max-w-5xl mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">Advocate Excellence & Strategic Legal Counsel</h1>
-            <p class="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">Providing legal advisory, litigation management, and regulatory compliance services tailored across corporate, civil, and criminal jurisdictions.</p>
-        </div>
-    </header>
+      <div>
+        <h3 class="text-white font-bold text-base mb-3 serif-font">Legal Compliance</h3>
+        <p class="text-xs leading-relaxed">Content published on this website is intended solely for informational purposes and does not constitute legal advice.</p>
+      </div>
+    </div>
+    <div class="text-center text-xs text-slate-600 mt-8 pt-4 border-t border-slate-800">
+      &copy; Aprajita Legal. All Rights Reserved.
+    </div>
+  </footer>
 
-    <!-- CONSULTATION FORM WITH AGENTIC AI INTAKE -->
-    <section id="consult" class="py-16 max-w-3xl mx-auto px-6">
-        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-slate-100">
-            <h2 class="text-2xl font-bold text-slate-900 mb-2">Legal Consultation Request</h2>
-            <p class="text-xs text-slate-500 mb-8">Submit your details below. Our embedded Agentic AI system will perform immediate preliminary intake classification for advocate review.</p>
+  <!-- 8. FRONTEND JAVASCRIPT (HANDLES BCI MODAL & SILENT SUBMIT) -->
+  <script>
+    // Paste your active Google Apps Script Web App URL here
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/YOUR_EXECUTABLE_DEPLOYMENT_ID/exec";
 
-            <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Full Name</label>
-                    <input type="text" id="userName" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-950 focus:bg-white outline-none text-sm transition">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Phone Number (WhatsApp Active)</label>
-                    <input type="tel" id="userPhone" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-950 focus:bg-white outline-none text-sm transition">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Brief Overview of Legal Dispute / Query</label>
-                    <textarea id="userMessage" rows="4" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-950 focus:bg-white outline-none text-sm transition" placeholder="Provide relevant details regarding your legal matter..."></textarea>
-                </div>
-                <button type="submit" id="submitBtn" class="w-full py-4 bg-blue-950 hover:bg-blue-900 text-white font-bold rounded-lg shadow-lg text-sm transition">Submit Case Request</button>
-            </form>
-            <div id="statusMsg" class="mt-6 text-center text-xs font-bold"></div>
-        </div>
-    </section>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('bci_accepted') === 'true') {
+        document.getElementById('bciModal').classList.add('hidden');
+        document.body.classList.remove('no-scroll');
+      }
+    });
 
-    <script src="app.js"></script>
+    function acceptBCI() {
+      localStorage.setItem('bci_accepted', 'true');
+      document.getElementById('bciModal').classList.add('hidden');
+      document.body.classList.remove('no-scroll');
+    }
+
+    function declineBCI() {
+      window.location.href = "https://www.google.com";
+    }
+
+    async function handleFormSubmit(event) {
+      event.preventDefault();
+      const submitBtn = document.getElementById('submitBtn');
+      const statusMsg = document.getElementById('statusMsg');
+
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Submitting Inquiry...";
+      statusMsg.innerText = "";
+
+      const formData = {
+        name: document.getElementById('userName').value,
+        phone: document.getElementById('userPhone').value,
+        message: document.getElementById('userMessage').value
+      };
+
+      try {
+        await fetch(APPS_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData)
+        });
+
+        statusMsg.className = "mt-4 text-center text-xs font-bold text-green-700";
+        statusMsg.innerText = "Inquiry submitted successfully. An advocate will contact you shortly.";
+        document.getElementById('contactForm').reset();
+      } catch (error) {
+        statusMsg.className = "mt-4 text-center text-xs font-bold text-red-700";
+        statusMsg.innerText = "Submission failed. Please contact us directly via WhatsApp or Email.";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Submit Case Request";
+      }
+    }
+  </script>
 </body>
 </html>
