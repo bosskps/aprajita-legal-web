@@ -34,24 +34,40 @@
     </div>
   </div>
 
-  <!-- NAVIGATION BAR (INTERLINKED) -->
-  <header class="sticky top-0 z-40 bg-slate-900 text-white shadow-md">
-    <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-      <a href="#home" class="flex items-center gap-3">
-        <img src="assets/Aprajita Legal logo.jpeg" alt="Aprajita Legal" class="h-10 w-auto object-contain" onerror="this.src='https://via.placeholder.com/120x40?text=LOGO'">
-        <span class="text-xl font-bold tracking-wide serif-font text-amber-400">APRAJITA LEGAL</span>
-      </a>
-      
-      <nav class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider uppercase">
-        <a href="#home" class="hover:text-amber-400 transition">Home</a>
-        <a href="#about" class="hover:text-amber-400 transition">About</a>
-        <a href="#practices" class="hover:text-amber-400 transition">Practices</a>
-        <a href="#team" class="hover:text-amber-400 transition">Advocates</a>
-        <a href="#consultation" class="bg-amber-600 hover:bg-amber-700 px-4 py-2 rounded text-white transition">Consultation</a>
-      </nav>
-    </div>
-  </header>
+  <!-- UPDATED HEADER WITH MOBILE HAMBURGER MENU -->
+<header class="sticky top-0 z-40 bg-slate-900 text-white shadow-md">
+  <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+    <a href="#home" class="flex items-center gap-3">
+      <img src="assets/logo.png" alt="Aparajita Legal" class="h-10 w-auto object-contain" onerror="this.src='https://via.placeholder.com/120x40?text=LOGO'">
+      <span class="text-xl font-bold tracking-wide serif-font text-amber-400">APARAJITA LEGAL</span>
+    </a>
+    
+    <!-- DESKTOP MENU (Visible on PC: md:flex) -->
+    <nav class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider uppercase">
+      <a href="#home" class="hover:text-amber-400 transition">Home</a>
+      <a href="#about" class="hover:text-amber-400 transition">About</a>
+      <a href="#practices" class="hover:text-amber-400 transition">Practices</a>
+      <a href="#team" class="hover:text-amber-400 transition">Advocates</a>
+      <a href="#consultation" class="bg-amber-600 hover:bg-amber-700 px-4 py-2 rounded text-white transition">Consultation</a>
+    </nav>
 
+    <!-- NAVIGATION BAR with MOBILE HAMBURGER BUTTON (Visible on Phone: md:hidden) -->
+    <button onclick="toggleMobileMenu()" class="md:hidden text-slate-300 hover:text-white focus:outline-none p-2">
+      <svg id="hamburgerIcon" class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- MOBILE DROPDOWN DRAWER (Toggled via JS) -->
+  <div id="mobileMenu" class="hidden md:hidden bg-slate-800 border-t border-slate-700 px-4 pt-3 pb-5 space-y-3 text-xs font-semibold tracking-wider uppercase">
+    <a href="#home" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-amber-400">Home</a>
+    <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-amber-400">About</a>
+    <a href="#practices" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-amber-400">Practices</a>
+    <a href="#team" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-amber-400">Advocates</a>
+    <a href="#consultation" onclick="toggleMobileMenu()" class="block py-2 text-amber-400 font-bold">Schedule Consultation</a>
+  </div>
+</header>
   <!-- HERO SECTION -->
   <section id="home" class="bg-slate-900 text-white py-24 px-4 text-center border-t border-slate-800">
     <div class="max-w-4xl mx-auto">
@@ -137,7 +153,7 @@
   <!-- FOOTER WITH CLICKABLE GMAIL & WHATSAPP ICONS -->
   <footer class="bg-slate-900 text-slate-400 py-10 text-xs">
     <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
-      <div><h3 class="text-white font-bold mb-2">Aprajita Legal</h3><p>Integrity, Legal Rigor, and Advocacy.</p></div>
+      <div><h3 class="text-white font-bold mb-2">&copy; <span id="year"></span> Aparajita Legal. All Rights Reserved.</h3><p>Integrity, Legal Rigor, and Advocacy.</p></div>
       <div>
         <h3 class="text-white font-bold mb-2">Direct Contact</h3>
         <div class="space-y-2">
@@ -155,8 +171,23 @@
 
     function acceptBCI() { localStorage.setItem('bci_accepted', 'true'); document.getElementById('bciModal').classList.add('hidden'); document.body.classList.remove('no-scroll'); }
     function declineBCI() { window.location.href = "https://www.google.com"; }
-    window.addEventListener('DOMContentLoaded', () => { if (localStorage.getItem('bci_accepted') === 'true') acceptBCI(); });
+    // Run DOM modifications once HTML elements finish loading
+    window.addEventListener('DOMContentLoaded', () => {
+      // AUTOMATICALLY INJECT CURRENT YEAR (2026) INTO THE FOOTER
+      document.getElementById("year").textContent = new Date().getFullYear();
 
+      // Check BCI modal state
+      if (localStorage.getItem('bci_accepted') === 'true') {
+        acceptBCI();
+      }
+    });
+    <!-- window.addEventListener('DOMContentLoaded', () => { if (localStorage.getItem('bci_accepted') === 'true') acceptBCI(); }); -->
+
+    function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('hidden');
+    }
+    
     function toggleChatbot() { document.getElementById('chatBox').classList.toggle('hidden'); }
 
     async function sendChatMessage() {
