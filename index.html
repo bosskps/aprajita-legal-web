@@ -27,6 +27,7 @@
       <p class="text-xs text-slate-600 leading-relaxed mb-4">
         As per the applicable rules of the Bar Council of India, this website is intended solely for general informational purposes and is not an advertisement, solicitation, or invitation for legal work. <br>
         By clicking <strong>"I Agree"</strong>, you acknowledge that you have voluntarily chosen to access this website <strong>Aprajita Legal</strong> and that no advocate–client relationship is created merely by accessing or using this website.
+      </p>
       <div class="flex gap-3 justify-end mt-6">
         <button onclick="declineBCI()" class="px-5 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded border">Decline</button>
         <button onclick="acceptBCI()" class="px-6 py-2 text-xs font-semibold text-white bg-slate-900 hover:bg-amber-700 rounded transition">I Agree & Proceed</button>
@@ -34,40 +35,39 @@
     </div>
   </div>
 
-  <!-- UPDATED HEADER WITH MOBILE HAMBURGER MENU -->
-<header class="sticky top-0 z-40 bg-slate-900 text-white shadow-md">
-  <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-    <a href="#home" class="flex items-center gap-3">
-      <img src="assets/Aprajita Legal logo.jpeg" alt="Aprajita Legal" class="h-10 w-auto object-contain" onerror="this.src='https://via.placeholder.com/120x40?text=LOGO'">
-      <span class="text-xl font-bold tracking-wide serif-font text-amber-400">APRAJITA LEGAL</span>
-    </a>
-    
-    <!-- DESKTOP MENU (Visible on PC: md:flex) -->
-    <nav class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider uppercase">
-      <a href="#home" class="hover:text-amber-400 transition">Home</a>
-      <a href="#about" class="hover:text-amber-400 transition">About</a>
-      <a href="#practices" class="hover:text-amber-400 transition">Practices</a>
-      <a href="#team" class="hover:text-amber-400 transition">Advocates</a>
-      <a href="#consultation" class="bg-amber-600 hover:bg-amber-700 px-4 py-2 rounded text-white transition">Consultation</a>
-    </nav>
+  <!-- HEADER WITH MOBILE HAMBURGER MENU -->
+  <header class="sticky top-0 z-40 bg-slate-900 text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-3">
+        <img src="assets/Aprajita Legal logo.jpeg" alt="Aprajita Legal" class="h-10 w-auto object-contain" onerror="this.src='https://via.placeholder.com/120x40?text=LOGO'">
+        <span class="text-xl font-bold tracking-wide serif-font text-amber-400">APRAJITA LEGAL</span>
+      </a>
+      
+      <!-- DESKTOP MENU -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider uppercase">
+        <a href="#home" class="hover:text-amber-400 transition">Home</a>
+        <a href="#about" class="hover:text-amber-400 transition">About</a>
+        <a href="#practices" class="hover:text-amber-400 transition">Practices</a>
+        <a href="#consultation" class="bg-amber-600 hover:bg-amber-700 px-4 py-2 rounded text-white transition">Consultation</a>
+      </nav>
 
-    <!-- NAVIGATION BAR with MOBILE HAMBURGER BUTTON (Visible on Phone: md:hidden) -->
-    <button onclick="toggleMobileMenu()" class="md:hidden text-slate-300 hover:text-white focus:outline-none p-2">
-      <svg id="hamburgerIcon" class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-        <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-    </button>
-  </div>
+      <!-- MOBILE HAMBURGER BUTTON -->
+      <button onclick="toggleMobileMenu()" class="md:hidden text-slate-300 hover:text-white focus:outline-none p-2">
+        <svg id="hamburgerIcon" class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
 
-  <!-- MOBILE DROPDOWN DRAWER (Toggled via JS) -->
-  <div id="mobileMenu" class="hidden md:hidden bg-slate-800 border-t border-slate-700 px-4 pt-3 pb-5 space-y-3 text-xs font-semibold tracking-wider uppercase">
-    <a href="#home" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-amber-400">Home</a>
-    <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-amber-400">About</a>
-    <a href="#practices" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-amber-400">Practices</a>
-    <a href="#team" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-amber-400">Advocates</a>
-    <a href="#consultation" onclick="toggleMobileMenu()" class="block py-2 text-amber-400 font-bold">Schedule Consultation</a>
-  </div>
-</header>
+    <!-- MOBILE DROPDOWN DRAWER -->
+    <div id="mobileMenu" class="hidden md:hidden bg-slate-800 border-t border-slate-700 px-4 pt-3 pb-5 space-y-3 text-xs font-semibold tracking-wider uppercase">
+      <a href="#home" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-amber-400">Home</a>
+      <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-amber-400">About</a>
+      <a href="#practices" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-amber-400">Practices</a>
+      <a href="#consultation" onclick="toggleMobileMenu()" class="block py-2 text-amber-400 font-bold">Schedule Consultation</a>
+    </div>
+  </header>
+
   <!-- HERO SECTION -->
   <section id="home" class="bg-slate-900 text-white py-24 px-4 text-center border-t border-slate-800">
     <div class="max-w-4xl mx-auto">
@@ -139,7 +139,7 @@
         <div class="bg-slate-200 text-slate-800 p-2 rounded max-w-[85%]">Hello! How can I assist you regarding your legal query today?</div>
       </div>
       <div class="p-2 bg-white border-t flex gap-2">
-        <input type="text" id="chatInput" placeholder="Type your legal query..." class="w-full text-xs px-2 py-1 border rounded outline-none">
+        <input type="text" id="chatInput" onkeypress="handleChatKeyPress(event)" placeholder="Type your legal query..." class="w-full text-xs px-2 py-1 border rounded outline-none">
         <button onclick="sendChatMessage()" class="bg-amber-600 text-white px-3 py-1 rounded text-xs font-bold">Send</button>
       </div>
     </div>
@@ -150,10 +150,10 @@
     <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/></svg>
   </a>
 
-  <!-- FOOTER WITH CLICKABLE GMAIL & WHATSAPP ICONS -->
+  <!-- FOOTER -->
   <footer class="bg-slate-900 text-slate-400 py-10 text-xs">
     <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
-      <div><h3 class="text-white font-bold mb-2">&copy; <span id="year"></span> Aparajita Legal. All Rights Reserved.</h3><p>Integrity, Legal Rigor, and Advocacy.</p></div>
+      <div><h3 class="text-white font-bold mb-2">&copy; <span id="year"></span> Aprajita Legal. All Rights Reserved.</h3><p>Integrity, Legal Rigor, and Advocacy.</p></div>
       <div>
         <h3 class="text-white font-bold mb-2">Direct Contact</h3>
         <div class="space-y-2">
@@ -165,259 +165,131 @@
     </div>
   </footer>
 
-  <!-- JAVASCRIPT LOGIC  
+  <!-- UNIFIED FRONTEND JAVASCRIPT -->
   <script>
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzBvO056innZdlOeIyuhpUsaAQ7kQZlZRgMohP93rpD_LGg7bmkEQVdyXl83M_M2Y2SbQ/exec";
 
-    function acceptBCI() { localStorage.setItem('bci_accepted', 'true'); document.getElementById('bciModal').classList.add('hidden'); document.body.classList.remove('no-scroll'); }
-    function declineBCI() { window.location.href = "https://www.google.com"; }
-    // Run DOM modifications once HTML elements finish loading
+    // 1. INITIALIZATION ON DOM LOAD
     window.addEventListener('DOMContentLoaded', () => {
-      // AUTOMATICALLY INJECT CURRENT YEAR (2026) INTO THE FOOTER
       document.getElementById("year").textContent = new Date().getFullYear();
 
-      // Check BCI modal state
+      // Enable scrolling if modal was previously accepted
       if (localStorage.getItem('bci_accepted') === 'true') {
         acceptBCI();
       }
     });
-    
-    function toggleMobileMenu() {
-    const menu = document.getElementById('mobileMenu');
-    menu.classList.toggle('hidden');
+
+    // 2. MODAL & SCROLLING MANAGEMENT
+    function acceptBCI() {
+      localStorage.setItem('bci_accepted', 'true');
+      const bciModal = document.getElementById('bciModal');
+      if (bciModal) bciModal.classList.add('hidden');
+      document.body.classList.remove('no-scroll'); // Restores webpage scrolling
     }
-    
-    function toggleChatbot() { document.getElementById('chatBox').classList.toggle('hidden'); }
+
+    function declineBCI() {
+      window.location.href = "https://www.google.com";
+    }
+
+    function toggleMobileMenu() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (mobileMenu) mobileMenu.classList.toggle('hidden');
+    }
+
+    // 3. CHATBOT TOGGLE & MESSAGE HANDLING
+    function toggleChatbot() {
+      const chatBox = document.getElementById('chatBox');
+      if (chatBox) chatBox.classList.toggle('hidden');
+    }
+
+    function handleChatKeyPress(event) {
+      if (event.key === 'Enter') {
+        sendChatMessage();
+      }
+    }
+
+    function escapeHtml(text) {
+      return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
 
     async function sendChatMessage() {
       const input = document.getElementById('chatInput');
-      const text = input.value.trim();
-      if(!text) return;
       const msgs = document.getElementById('chatMessages');
-      msgs.innerHTML += `<div class="bg-amber-600 text-white p-2 rounded ml-auto max-w-[85%]">${text}</div>`;
+      if (!input || !msgs) return;
+
+      const text = input.value.trim();
+      if (!text) return;
+
+      msgs.innerHTML += `<div class="bg-amber-600 text-white p-2 rounded ml-auto max-w-[85%] text-xs mb-2">${escapeHtml(text)}</div>`;
       input.value = '';
       msgs.scrollTop = msgs.scrollHeight;
 
+      const typingId = 'typing-' + Date.now();
+      msgs.innerHTML += `<div id="${typingId}" class="bg-slate-200 text-slate-600 p-2 rounded max-w-[85%] text-xs italic mb-2">AI Assistant is typing...</div>`;
+      msgs.scrollTop = msgs.scrollHeight;
+
       try {
-        await fetch(APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", body: JSON.stringify({ name: "Chatbot Visitor", phone: "N/A", message: text }) });
-        msgs.innerHTML += `<div class="bg-slate-200 text-slate-800 p-2 rounded max-w-[85%]">Thank you. Your message has been routed to our advocate team for review.</div>`;
-      } catch(e) {
-        msgs.innerHTML += `<div class="bg-red-100 text-red-700 p-2 rounded max-w-[85%]">Network error. Please use WhatsApp direct chat.</div>`;
+        const response = await fetch(APPS_SCRIPT_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify({ type: "chat", message: text })
+        });
+
+        const data = await response.json();
+        const typingElem = document.getElementById(typingId);
+        if (typingElem) typingElem.remove();
+
+        let formattedReply = (data.reply || "Thank you for reaching out. An advocate will review your query.")
+          .replace(/\n/g, '<br>')
+          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+        msgs.innerHTML += `<div class="bg-slate-200 text-slate-800 p-2 rounded max-w-[85%] text-xs mb-2">${formattedReply}</div>`;
+      } catch (error) {
+        const typingElem = document.getElementById(typingId);
+        if (typingElem) typingElem.remove();
+
+        msgs.innerHTML += `<div class="bg-red-100 text-red-700 p-2 rounded max-w-[85%] text-xs mb-2">Network issue. Please connect directly via WhatsApp.</div>`;
       }
       msgs.scrollTop = msgs.scrollHeight;
     }
 
-    async function handleFormSubmit(e) {
-      e.preventDefault();
-      const btn = document.getElementById('submitBtn');
-      const status = document.getElementById('statusMsg');
-      btn.disabled = true; btn.innerText = "Sending...";
+    // 4. CONSULTATION FORM HANDLER
+    async function handleFormSubmit(event) {
+      event.preventDefault();
+      const nameInput = document.getElementById('userName');
+      const phoneInput = document.getElementById('userPhone');
+      const msgInput = document.getElementById('userMessage');
+      const statusDiv = document.getElementById('statusMsg');
+      const submitBtn = document.getElementById('submitBtn');
+
+      if (!nameInput || !phoneInput || !msgInput) return;
+
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Submitting...";
+
       try {
         await fetch(APPS_SCRIPT_URL, {
-          method: "POST", mode: "no-cors",
-          body: JSON.stringify({ name: document.getElementById('userName').value, phone: document.getElementById('userPhone').value, message: document.getElementById('userMessage').value })
+          method: "POST",
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify({
+            type: "form",
+            name: nameInput.value.trim(),
+            phone: phoneInput.value.trim(),
+            message: msgInput.value.trim()
+          })
         });
-        status.className = "mt-4 text-center text-xs font-bold text-green-700";
-        status.innerText = "Inquiry registered successfully. An advocate will contact you.";
+
+        statusDiv.className = "mt-4 text-center text-xs font-bold text-green-700";
+        statusDiv.innerText = "Inquiry registered successfully. An advocate will contact you.";
         document.getElementById('contactForm').reset();
       } catch (err) {
-        status.className = "mt-4 text-center text-xs font-bold text-red-700";
-        status.innerText = "Failed to submit. Please use the WhatsApp button.";
-      } finally { btn.disabled = false; btn.innerText = "Submit Consultation"; }
-    }
-  </script> -->
-  <!-- COMPLETE UNIFIED FRONTEND JAVASCRIPT -->
-  <script>
-  // ====================================================================
-  // 1. CONFIGURATION & GLOBAL VARIABLES
-  // ====================================================================
-  // Paste your exact deployed Google Apps Script Web App URL below
-  const APPARAJITA_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzBvO056innZdlOeIyuhpUsaAQ7kQZlZRgMohP93rpD_LGg7bmkEQVdyXl83M_M2Y2SbQ/exec";
-
-  // ====================================================================
-  // 2. INITIALIZATION (Runs immediately after HTML rendering)
-  // ====================================================================
-  window.addEventListener('DOMContentLoaded', () => {
-    // Inject current system year (2026) into footer
-    const yearElement = document.getElementById("year");
-    if (yearElement) {
-      yearElement.textContent = new Date().getFullYear();
-    }
-
-    // Check Bar Council Disclaimer (BCI) acceptance state
-    if (localStorage.getItem('bci_accepted') === 'true') {
-      const bciModal = document.getElementById('bciModal');
-      if (bciModal) bciModal.classList.add('hidden');
-    }
-
-    // Attach dynamic submit listener to consultation form
-    const consultationForm = document.getElementById('consultationForm');
-    if (consultationForm) {
-      consultationForm.addEventListener('submit', handleFormSubmit);
-    }
-    });
-
-    // ====================================================================
-    // 3. UI TOGGLE FUNCTIONS (Mobile Menu & BCI Modal)
-    // ====================================================================
-    function toggleMobileMenu() {
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (mobileMenu) {
-      mobileMenu.classList.toggle('hidden');
-    }
-    }
-
-    function acceptBCI() {
-    localStorage.setItem('bci_accepted', 'true');
-    const bciModal = document.getElementById('bciModal');
-    if (bciModal) {
-      bciModal.classList.add('hidden');
-    }
-    }
-
-    function toggleChat() {
-    const chatWindow = document.getElementById('chatWindow');
-    if (chatWindow) {
-      chatWindow.classList.toggle('hidden');
-    }
-    }
-
-    // ====================================================================
-    // 4. CONSULTATION FORM HANDLER (Routes type: "form" -> Backend Triage)
-    // ====================================================================
-    async function handleFormSubmit(event) {
-    event.preventDefault();
-
-    const nameInput = document.getElementById('clientName');
-    const phoneInput = document.getElementById('clientPhone');
-    const msgInput = document.getElementById('clientMessage');
-    const statusDiv = document.getElementById('formStatus');
-    const submitBtn = document.getElementById('submitBtn');
-
-    const name = nameInput ? nameInput.value.trim() : '';
-    const phone = phoneInput ? phoneInput.value.trim() : '';
-    const message = msgInput ? msgInput.value.trim() : '';
-
-    if (!name || !phone || !message) {
-      if (statusDiv) {
-        statusDiv.className = "text-red-500 text-xs mt-2 font-semibold";
-        statusDiv.innerText = "Please fill in all required fields.";
-      }
-      return;
-    }
-
-    // UI Loading state
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.innerText = "Submitting Inquiry...";
-    }
-
-    try {
-      const response = await fetch(APPARAJITA_APPS_SCRIPT_URL, {
-        method: "POST",
-        headers: { "Content-Type": "text/plain" },
-        body: JSON.stringify({
-          type: "form",
-          name: name,
-          phone: phone,
-          message: message
-        })
-      });
-
-      const data = await response.json();
-
-      if (data.status === "success") {
-        if (statusDiv) {
-          statusDiv.className = "text-emerald-500 text-xs mt-2 font-semibold";
-          statusDiv.innerText = "✓ Request submitted! An advocate will review your matter and contact you shortly.";
-        }
-        // Clear input fields
-        if (nameInput) nameInput.value = '';
-        if (phoneInput) phoneInput.value = '';
-        if (msgInput) msgInput.value = '';
-      } else {
-        throw new Error(data.message || "Submission failed.");
-      }
-      } catch (error) {
-      if (statusDiv) {
-        statusDiv.className = "text-red-500 text-xs mt-2 font-semibold";
-        statusDiv.innerText = "Unable to submit inquiry. Please reach out via direct WhatsApp.";
-      }
+        statusDiv.className = "mt-4 text-center text-xs font-bold text-red-700";
+        statusDiv.innerText = "Failed to submit. Please use the WhatsApp button.";
       } finally {
-      if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.innerText = "Schedule Consultation";
+        submitBtn.innerText = "Submit Consultation";
       }
-      }
-      }
-
-    // ====================================================================
-    // 5. LIVE AI CHATBOT HANDLER (Routes type: "chat" -> Conversational AI)
-    // ====================================================================
-    async function sendChatMessage() {
-    const input = document.getElementById('chatInput');
-    const msgs = document.getElementById('chatMessages');
-    if (!input || !msgs) return;
-
-    const text = input.value.trim();
-    if (!text) return;
-
-    // 1. Render User Message in Chat Window
-    msgs.innerHTML += `<div class="bg-amber-600 text-white p-2.5 rounded-lg ml-auto max-w-[85%] shadow-sm text-xs mb-2">${escapeHtml(text)}</div>`;
-    input.value = '';
-    msgs.scrollTop = msgs.scrollHeight;
-
-    // 2. Render Temporary Typing Indicator
-    const typingId = 'typing-' + Date.now();
-    msgs.innerHTML += `<div id="${typingId}" class="bg-slate-200 text-slate-600 p-2.5 rounded-lg max-w-[85%] text-xs italic mb-2">AI Legal Assistant is typing...</div>`;
-    msgs.scrollTop = msgs.scrollHeight;
-
-    try {
-      // 3. Send request to Google Apps Script backend
-      const response = await fetch(APPARAJITA_APPS_SCRIPT_URL, {
-        method: "POST",
-        headers: { "Content-Type": "text/plain" },
-        body: JSON.stringify({
-          type: "chat",
-          message: text
-        })
-      });
-
-      const data = await response.json();
-
-      // 4. Remove Typing Indicator
-      const typingElem = document.getElementById(typingId);
-      if (typingElem) typingElem.remove();
-
-      // 5. Format markdown bolding and line breaks in response text
-      let formattedReply = (data.reply || "Thank you for reaching out. Connect with our advocates for advice.")
-        .replace(/\n/g, '<br>')
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-
-      // 6. Render AI Reply
-      msgs.innerHTML += `<div class="bg-slate-100 text-slate-800 border border-slate-200 p-2.5 rounded-lg max-w-[85%] text-xs leading-relaxed shadow-sm mb-2">${formattedReply}</div>`;
-
-      } catch (error) {
-      const typingElem = document.getElementById(typingId);
-      if (typingElem) typingElem.remove();
-
-      msgs.innerHTML += `<div class="bg-red-50 text-red-700 p-2.5 rounded-lg max-w-[85%] text-xs mb-2">Connection error. Please message us directly via WhatsApp.</div>`;
-      }
-
-      msgs.scrollTop = msgs.scrollHeight;
-      }
-
-      // Keypress event handler: Allows pressing 'Enter' inside chat input to send message
-      function handleChatKeyPress(event) {
-      if (event.key === 'Enter') {
-      sendChatMessage();
-      }
-      }
-
-      // Security Helper: Escape special characters to prevent HTML/XSS injection
-      function escapeHtml(text) {
-      return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-      }
-    </script>
+    }
+  </script>
 </body>
 </html>
