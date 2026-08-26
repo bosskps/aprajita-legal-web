@@ -41,28 +41,28 @@
 
   <!-- HEADER WITH MOBILE HAMBURGER MENU -->
   <header class="sticky top-0 z-40 bg-slate-900 text-white shadow-md">
-    <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-      <a href="#home" class="flex items-center gap-3">
-        <img src="assets/Aprajita Legal logo.jpeg" alt="Aprajita Legal Associates" class="h-10 w-auto object-contain" onerror="this.src='https://via.placeholder.com/120x40?text=LOGO'">
-        <!-- <span class="text-xl font-bold tracking-wide serif-font text-amber-400">APRAJITA LEGAL ASSOCIATES</span> -->
-        <div class="flex flex-col">
-          <!-- Main Title -->
-          <span class="text-xl font-bold tracking-wide serif-font text-amber-400">APRAJITA LEGAL ASSOCIATES</span>
+    <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between gap-2">
+      <a href="#home" class="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+        <img src="assets/Aprajita Legal logo.jpeg" alt="Aprajita Legal Associates" class="h-9 sm:h-11 w-auto object-contain shrink-0" onerror="this.src='https://via.placeholder.com/120x40?text=LOGO'">
+        <div class="flex flex-col min-w-0 leading-tight">
+          <!-- Main Title (Responsive Text Sizing) -->
+          <span class="text-sm sm:text-lg md:text-xl font-bold tracking-tight sm:tracking-wide serif-font text-amber-400 truncate">APRAJITA LEGAL ASSOCIATES</span>
           <!-- Tagline -->
-          <span class="text-sm font-medium tracking-wider text-gray-300 mt-1">Unbeaten Advocacy - Unshaken Justice</span>
+          <span class="text-[10px] sm:text-xs font-medium tracking-tight sm:tracking-wider text-slate-300 truncate mt-0.5">Unbeaten Advocacy - Unshaken Justice</span>
         </div>
       </a>
       
       <!-- DESKTOP MENU -->
-      <nav class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider uppercase">
+      <nav class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider uppercase shrink-0">
         <a href="#home" class="hover:text-amber-400 transition">Home</a>
+        <a href="#gallery" class="hover:text-amber-400 transition">Gallery</a>
         <a href="#about" class="hover:text-amber-400 transition">About</a>
         <a href="#practices" class="hover:text-amber-400 transition">Practices</a>
         <a href="#consultation" class="bg-amber-600 hover:bg-amber-700 px-4 py-2 rounded text-white transition">Consultation</a>
       </nav>
 
       <!-- MOBILE HAMBURGER BUTTON -->
-      <button onclick="toggleMobileMenu()" class="md:hidden text-slate-300 hover:text-white focus:outline-none p-2">
+      <button onclick="toggleMobileMenu()" class="md:hidden text-slate-300 hover:text-white focus:outline-none p-2 shrink-0" aria-label="Toggle Menu">
         <svg id="hamburgerIcon" class="w-6 h-6 fill-current" viewBox="0 0 24 24">
           <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
@@ -72,6 +72,7 @@
     <!-- MOBILE DROPDOWN DRAWER -->
     <div id="mobileMenu" class="hidden md:hidden bg-slate-800 border-t border-slate-700 px-4 pt-3 pb-5 space-y-3 text-xs font-semibold tracking-wider uppercase">
       <a href="#home" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-amber-400">Home</a>
+      <a href="#gallery" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-amber-400">Gallery</a>
       <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-amber-400">About</a>
       <a href="#practices" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-amber-400">Practices</a>
       <a href="#consultation" onclick="toggleMobileMenu()" class="block py-2 text-amber-400 font-bold">Schedule Consultation</a>
@@ -79,16 +80,58 @@
   </header>
 
   <!-- HERO SECTION -->
-  <section id="home" class="bg-slate-900 text-white py-24 px-4 text-center border-t border-slate-800">
+  <section id="home" class="bg-slate-900 text-white py-20 md:py-24 px-4 text-center border-t border-slate-800">
     <div class="max-w-4xl mx-auto">
-      <h1 class="text-4xl md:text-6xl font-bold text-amber-400 mb-6 serif-font leading-tight">Excellence in Legal Practice</h1>
-      <p class="text-base md:text-lg text-slate-300 font-light mb-8 max-w-2xl mx-auto">Providing strategic counsel, litigation advocacy, and legal assistance across Indian jurisdictions.</p>
-      <div class="flex justify-center gap-4">
+      <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-amber-400 mb-6 serif-font leading-tight">Excellence in Legal Practice</h1>
+      <p class="text-sm md:text-lg text-slate-300 font-light mb-8 max-w-2xl mx-auto">Providing strategic counsel, litigation advocacy, and legal assistance across Indian jurisdictions.</p>
+      <div class="flex flex-wrap justify-center gap-4">
         <a href="#consultation" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-6 py-3 rounded transition">Schedule Consultation</a>
         <a href="#practices" class="border border-slate-600 hover:bg-slate-800 text-slate-300 text-xs font-bold px-6 py-3 rounded transition">Our Practices</a>
       </div>
     </div>
   </section>
+
+  <!-- AUTOMATED SLIDESHOW GALLERY SECTION -->
+  <section id="gallery" class="py-14 bg-slate-950 text-white border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold text-amber-400 serif-font">Photo Gallery & Highlights</h2>
+        <p class="text-xs text-slate-400 mt-2">Browse court highlights and events. Click any image to open full screen.</p>
+      </div>
+
+      <!-- Slideshow Container -->
+      <div class="relative max-w-4xl mx-auto overflow-hidden rounded-xl border border-slate-800 bg-slate-900 shadow-2xl group">
+        <div id="slidesContainer" class="flex transition-transform duration-500 ease-out h-64 sm:h-80 md:h-[420px]">
+          <div id="galleryLoading" class="w-full h-full flex items-center justify-center text-xs text-slate-400 font-semibold">
+            Loading dynamic slideshow...
+          </div>
+        </div>
+
+        <!-- Carousel Left & Right Arrow Buttons -->
+        <button onclick="prevSlide()" aria-label="Previous Slide" class="absolute left-3 top-1/2 -translate-y-1/2 bg-slate-900/80 hover:bg-amber-600 text-white p-3 rounded-full backdrop-blur-sm transition border border-slate-700 opacity-90 hover:opacity-100 z-10">
+          &#10094;
+        </button>
+        <button onclick="nextSlide()" aria-label="Next Slide" class="absolute right-3 top-1/2 -translate-y-1/2 bg-slate-900/80 hover:bg-amber-600 text-white p-3 rounded-full backdrop-blur-sm transition border border-slate-700 opacity-90 hover:opacity-100 z-10">
+          &#10095;
+        </button>
+
+        <!-- Slide Navigation Dots -->
+        <div id="slideDots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX MODAL FOR FULL SCREEN VIEW -->
+  <div id="lightboxModal" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-md flex items-center justify-center p-4 transition-opacity duration-300 opacity-0 pointer-events-none">
+    <button id="closeLightbox" onclick="closeLightbox()" aria-label="Close Lightbox" class="absolute top-4 right-6 text-white text-4xl font-light hover:text-amber-400 z-50 cursor-pointer select-none">&times;</button>
+    <button id="prevLightboxBtn" onclick="showPrevLightboxImage()" aria-label="Previous Photo" class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white text-2xl md:text-3xl w-12 h-12 flex items-center justify-center rounded-full bg-slate-800/80 hover:bg-amber-600 z-50 border border-slate-700 cursor-pointer transition select-none">&#10094;</button>
+    <button id="nextLightboxBtn" onclick="showNextLightboxImage()" aria-label="Next Photo" class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white text-2xl md:text-3xl w-12 h-12 flex items-center justify-center rounded-full bg-slate-800/80 hover:bg-amber-600 z-50 border border-slate-700 cursor-pointer transition select-none">&#10095;</button>
+    
+    <div class="relative max-w-5xl max-h-[90vh] flex flex-col items-center justify-center">
+      <img id="lightboxImage" src="" alt="Enlarged photo" class="max-w-full max-h-[78vh] object-contain rounded-lg shadow-2xl border border-slate-700">
+      <div id="lightboxCounter" class="mt-3 text-xs text-slate-300 font-semibold bg-slate-900/90 px-4 py-1.5 rounded-full border border-slate-700">0 / 0</div>
+    </div>
+  </div>
 
   <!-- ARTICLES & LEGAL UPDATES SECTION -->
   <section id="articles" class="py-16 bg-white border-b border-slate-200">
@@ -113,15 +156,10 @@
       <div>
         <h2 class="text-3xl font-bold text-slate-900 serif-font mb-4">About Aprajita Legal Associates</h2>
         <p class="text-xs text-slate-600 leading-relaxed mb-4">APRAJITA LEGAL ASSOCIATES is a professionally driven legal practice committed to providing clear, strategic and responsible legal assistance to individuals, families, businesses and institutions.</p>
-        <p class="text-xs text-slate-600 leading-relaxed">Built on the principles of integrity, preparation and determined advocacy, our approach combines legal knowledge with a practical understanding of the realities that clients face. We believe that effective legal representation is not merely about appearing in court—it is about understanding the problem, identifying the right legal strategy, managing risk and pursuing the matter with diligence.</p>
-        <p class="text-xs text-slate-600 leading-relaxed">Our practice encompasses Civil, Criminal, Tax, Commercial and Matrimonial matters, with a focus on litigation, dispute resolution, legal strategy and procedural assistance. We work with clients through different stages of a legal matter, from understanding their rights and assessing available remedies to representation before the appropriate courts, authorities and forums, wherever applicable.</p>
-        <p class="text-xs text-slate-600 leading-relaxed">A Client-Centred Approach : Every legal matter carries its own facts, risks and consequences. We therefore believe in a matter-specific approach rather than a one-size-fits-all solution.</p>
-        <p class="text-xs text-slate-600 leading-relaxed">Our work is guided by- <br> Strategic Legal Thinking : We analyse the facts, applicable law and procedural position before recommending a course of action. <br> Diligent Representation : We approach each matter with preparation, attention to detail and professional responsibility. <br> Clear Communication : Clients deserve to understand their legal position. We aim to communicate legal issues and procedural developments in a clear and accessible manner.
-                                                          <br> Ethical Advocacy : Our practice is grounded in professional ethics, confidentiality and respect for the legal process.</p>
-        <p class="text-xs text-slate-600 leading-relaxed">Our vision is to build a modern legal practice that combines local accessibility with a broader, technology-enabled approach to legal services.</p>
-        <p class="text-xs text-slate-600 leading-relaxed">Our Philosophy : Unbeaten Advocacy. Unshaken Justice.</p>
-        <p class="text-xs text-slate-600 leading-relaxed">For us, advocacy means more than making arguments. It means preparation before the hearing, clarity before the decision, diligence throughout the proceedings and standing firmly for the lawful interests of our clients.</p>
-        <p class="text-xs text-slate-600 leading-relaxed">Practice Areas: Civil | Criminal | Tax | Commercial | Matrimonial Cyber Laws. <br> Contact: <strong>9795313075</strong></p>
+        <p class="text-xs text-slate-600 leading-relaxed mb-4">Built on the principles of integrity, preparation and determined advocacy, our approach combines legal knowledge with a practical understanding of the realities that clients face. We believe that effective legal representation is not merely about appearing in court—it is about understanding the problem, identifying the right legal strategy, managing risk and pursuing the matter with diligence.</p>
+        <p class="text-xs text-slate-600 leading-relaxed mb-4">Our practice encompasses Civil, Criminal, Tax, Commercial and Matrimonial matters, with a focus on litigation, dispute resolution, legal strategy and procedural assistance.</p>
+        <p class="text-xs text-slate-600 leading-relaxed mb-4"><strong>Our Philosophy:</strong> Unbeaten Advocacy. Unshaken Justice.</p>
+        <p class="text-xs text-slate-600 leading-relaxed">Practice Areas: Civil | Criminal | Tax | Commercial | Matrimonial | Cyber Laws. <br> Contact: <strong>9795313075</strong></p>
       </div>
       <div class="bg-slate-900 text-amber-400 p-8 rounded shadow-lg">
         <div class="grid grid-cols-2 gap-6 text-center">
@@ -132,18 +170,60 @@
     </div>
   </section>
 
-  <!-- PRACTICE AREAS -->
+  <!-- PRACTICE AREAS (CLICKABLE CARDS THAT OPEN IN A NEW TAB) -->
   <section id="practices" class="py-16 bg-slate-100 border-y border-slate-200">
     <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-3xl font-bold text-slate-900 serif-font text-center mb-10">Practice Areas</h2>
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-white p-6 rounded shadow-sm border"><h3 class="font-bold text-slate-900 serif-font mb-2">Criminal Litigation</h3><p class="text-xs text-slate-600">Legal representation and assistance in Criminal Proceedings, Complaints, Bail Matters, Defence and related Procedural issues.</p></div>
-        <div class="bg-white p-6 rounded shadow-sm border"><h3 class="font-bold text-slate-900 serif-font mb-2">Cyber Crimes</h3><p class="text-xs text-slate-600">Digital Fraud, Social Media Crimes.</p></div>
-        <div class="bg-white p-6 rounded shadow-sm border"><h3 class="font-bold text-slate-900 serif-font mb-2">Tax & Regulatory Matters</h3><p class="text-xs text-slate-600">Income Tax, GST and other Financial Compliance, Assistance concerning Tax-related Disputes, Compliance issues and Proceedings before appropriate authorities and Forums.</p></div>
-        <div class="bg-white p-6 rounded shadow-sm border"><h3 class="font-bold text-slate-900 serif-font mb-2">Matrimonial & Family Matters</h3><p class="text-xs text-slate-600">Legal assistance concerning Matrimonial Disputes, Family-related Proceedings and Associated Legal Remedies..</p></div>
-        <div class="bg-white p-6 rounded shadow-sm border"><h3 class="font-bold text-slate-900 serif-font mb-2">Civil Litigation</h3><p class="text-xs text-slate-600">Property Disputes, Contractual Disputes, Recovery Matters, Injunctions and other Civil Proceedings.</p></div>
-        <div class="bg-white p-6 rounded shadow-sm border"><h3 class="font-bold text-slate-900 serif-font mb-2">Commercial & Corporate Matters</h3><p class="text-xs text-slate-600">Commercial Disputes, Agreements, Business-related Legal issues and Corporate Legal Assistance.</p></div>
-        <div class="bg-white p-6 rounded shadow-sm border"><h3 class="font-bold text-slate-900 serif-font mb-2">Constitutional Writs</h3><p class="text-xs text-slate-600">Writs and fundamental rights protection before High Courts.</p></div>      
+        
+        <a href="practice-details.html#criminal" target="_blank" class="block bg-white p-6 rounded shadow-sm border border-slate-200 hover:border-amber-500 hover:shadow-md transition group">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="font-bold text-slate-900 serif-font group-hover:text-amber-600 transition">Criminal Litigation</h3>
+            <span class="text-xs text-amber-600 font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">Legal representation and assistance in Criminal Proceedings, Complaints, Bail Matters, Defence and related Procedural issues.</p>
+        </a>
+
+        <a href="practice-details.html#cyber" target="_blank" class="block bg-white p-6 rounded shadow-sm border border-slate-200 hover:border-amber-500 hover:shadow-md transition group">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="font-bold text-slate-900 serif-font group-hover:text-amber-600 transition">Cyber Crimes</h3>
+            <span class="text-xs text-amber-600 font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">Digital Fraud, Financial Cyber Crimes, Identity Theft, Data Breaches, and Social Media Offenses.</p>
+        </a>
+
+        <a href="practice-details.html#tax" target="_blank" class="block bg-white p-6 rounded shadow-sm border border-slate-200 hover:border-amber-500 hover:shadow-md transition group">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="font-bold text-slate-900 serif-font group-hover:text-amber-600 transition">Tax & Regulatory Matters</h3>
+            <span class="text-xs text-amber-600 font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">Income Tax, GST and Financial Compliance, Tax Disputes, and Proceedings before regulatory authorities.</p>
+        </a>
+
+        <a href="practice-details.html#matrimonial" target="_blank" class="block bg-white p-6 rounded shadow-sm border border-slate-200 hover:border-amber-500 hover:shadow-md transition group">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="font-bold text-slate-900 serif-font group-hover:text-amber-600 transition">Matrimonial & Family Matters</h3>
+            <span class="text-xs text-amber-600 font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">Legal assistance concerning Matrimonial Disputes, Family-related Proceedings, Maintenance, and Custody.</p>
+        </a>
+
+        <a href="practice-details.html#civil" target="_blank" class="block bg-white p-6 rounded shadow-sm border border-slate-200 hover:border-amber-500 hover:shadow-md transition group">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="font-bold text-slate-900 serif-font group-hover:text-amber-600 transition">Civil Litigation</h3>
+            <span class="text-xs text-amber-600 font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">Property Disputes, Contractual Disputes, Recovery Suits, Injunctions and overall Civil Proceedings.</p>
+        </a>
+
+        <a href="practice-details.html#commercial" target="_blank" class="block bg-white p-6 rounded shadow-sm border border-slate-200 hover:border-amber-500 hover:shadow-md transition group">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="font-bold text-slate-900 serif-font group-hover:text-amber-600 transition">Commercial & Corporate Matters</h3>
+            <span class="text-xs text-amber-600 font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">Commercial Disputes, Drafting Agreements, Business Compliance, and Corporate Legal Assistance.</p>
+        </a>
+
       </div>
     </div>
   </section>
@@ -206,24 +286,37 @@
 
   <!-- UNIFIED FRONTEND JAVASCRIPT -->
   <script>
+    // Configuration Credentials
+    const REPO_OWNER = "bosskps"; 
+    const REPO_NAME = "aprajita-legal-web"; 
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzBvO056innZdlOeIyuhpUsaAQ7kQZlZRgMohP93rpD_LGg7bmkEQVdyXl83M_M2Y2SbQ/exec";
+    const GITHUB_ARTICLES_API = `https://api.github.com/repos/${bosskps}/${aprajita-legal-web}/contents/content/articles`;
+    const GITHUB_UPLOADS_API = `https://api.github.com/repos/${bosskps}/${aprajita-legal-web}/contents/content/uploads`;
+
+    // Global State Variables for Gallery & Lightbox
+    let galleryImages = [];
+    let currentSlideIndex = 0;
+    let currentLightboxIndex = 0;
+    let autoSlideTimer = null;
 
     // 1. INITIALIZATION ON DOM LOAD
     window.addEventListener('DOMContentLoaded', () => {
       document.getElementById("year").textContent = new Date().getFullYear();
 
-      // Enable scrolling if modal was previously accepted
       if (localStorage.getItem('bci_accepted') === 'true') {
         acceptBCI();
       }
+
+      loadUploadedGallery();
+      loadPublishedArticles();
     });
 
-    // 2. MODAL & SCROLLING MANAGEMENT
+    // 2. BCI MODAL & MOBILE MENU
     function acceptBCI() {
       localStorage.setItem('bci_accepted', 'true');
       const bciModal = document.getElementById('bciModal');
       if (bciModal) bciModal.classList.add('hidden');
-      document.body.classList.remove('no-scroll'); // Restores webpage scrolling
+      document.body.classList.remove('no-scroll');
     }
 
     function declineBCI() {
@@ -235,16 +328,178 @@
       if (mobileMenu) mobileMenu.classList.toggle('hidden');
     }
 
-    // 3. CHATBOT TOGGLE & MESSAGE HANDLING
+    // 3. DYNAMIC GALLERY SLIDESHOW & LIGHTBOX CONTROLS
+    async function loadUploadedGallery() {
+      const container = document.getElementById("slidesContainer");
+      const loading = document.getElementById("galleryLoading");
+      const dotsContainer = document.getElementById("slideDots");
+
+      try {
+        const response = await fetch(GITHUB_UPLOADS_API);
+        if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+
+        const files = await response.json();
+        const validExts = [".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg"];
+        galleryImages = files.filter(f => validExts.some(ext => f.name.toLowerCase().endsWith(ext)));
+
+        if (galleryImages.length === 0) {
+          if (loading) loading.innerText = "No gallery photos uploaded yet.";
+          return;
+        }
+
+        container.innerHTML = "";
+        dotsContainer.innerHTML = "";
+
+        galleryImages.forEach((imgObj, idx) => {
+          // Build Slide Element
+          const slide = document.createElement("div");
+          slide.className = "w-full h-full shrink-0 relative cursor-pointer group";
+          slide.innerHTML = `
+            <img src="${imgObj.download_url}" alt="${imgObj.name}" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-slate-900/80 text-amber-400 text-xs font-semibold px-4 py-2 rounded-full border border-amber-500/50">Click to Enlarge</span>
+            </div>
+          `;
+          slide.addEventListener("click", () => openLightbox(idx));
+          container.appendChild(slide);
+
+          // Build Navigation Dot
+          const dot = document.createElement("button");
+          dot.className = `w-2.5 h-2.5 rounded-full transition-all ${idx === 0 ? 'bg-amber-400 w-6' : 'bg-white/50'}`;
+          dot.addEventListener("click", () => goToSlide(idx));
+          dotsContainer.appendChild(dot);
+        });
+
+        startAutoSlide();
+
+      } catch (err) {
+        if (loading) {
+          loading.className = "w-full text-center py-4 text-xs text-red-400 font-bold";
+          loading.innerText = `Unable to load gallery dynamic images.`;
+        }
+      }
+    }
+
+    function updateSlidePosition() {
+      const container = document.getElementById("slidesContainer");
+      const dots = document.querySelectorAll("#slideDots button");
+      if (!container) return;
+
+      container.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+
+      dots.forEach((dot, idx) => {
+        if (idx === currentSlideIndex) {
+          dot.className = "w-6 h-2.5 rounded-full bg-amber-400 transition-all";
+        } else {
+          dot.className = "w-2.5 h-2.5 rounded-full bg-white/50 transition-all";
+        }
+      });
+    }
+
+    function nextSlide() {
+      if (!galleryImages.length) return;
+      currentSlideIndex = (currentSlideIndex + 1) % galleryImages.length;
+      updateSlidePosition();
+      resetAutoSlide();
+    }
+
+    function prevSlide() {
+      if (!galleryImages.length) return;
+      currentSlideIndex = (currentSlideIndex - 1 + galleryImages.length) % galleryImages.length;
+      updateSlidePosition();
+      resetAutoSlide();
+    }
+
+    function goToSlide(index) {
+      currentSlideIndex = index;
+      updateSlidePosition();
+      resetAutoSlide();
+    }
+
+    function startAutoSlide() {
+      autoSlideTimer = setInterval(() => {
+        if (galleryImages.length > 0) {
+          currentSlideIndex = (currentSlideIndex + 1) % galleryImages.length;
+          updateSlidePosition();
+        }
+      }, 4000);
+    }
+
+    function resetAutoSlide() {
+      clearInterval(autoSlideTimer);
+      startAutoSlide();
+    }
+
+    // Lightbox Controls
+    function openLightbox(index) {
+      const modal = document.getElementById("lightboxModal");
+      if (!modal || !galleryImages.length) return;
+
+      currentLightboxIndex = index;
+      updateLightboxContent();
+
+      modal.classList.remove("hidden");
+      void modal.offsetWidth;
+      modal.classList.remove("opacity-0", "pointer-events-none");
+      modal.classList.add("opacity-100", "pointer-events-auto");
+    }
+
+    function updateLightboxContent() {
+      const modalImg = document.getElementById("lightboxImage");
+      const counter = document.getElementById("lightboxCounter");
+      if (!galleryImages.length || !modalImg) return;
+
+      const img = galleryImages[currentLightboxIndex];
+      modalImg.src = img.download_url;
+      modalImg.alt = img.name || "Enlarged photo";
+
+      if (counter) {
+        counter.innerText = `${currentLightboxIndex + 1} / ${galleryImages.length}`;
+      }
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById("lightboxModal");
+      if (!modal) return;
+
+      modal.classList.remove("opacity-100", "pointer-events-auto");
+      modal.classList.add("opacity-0", "pointer-events-none");
+
+      setTimeout(() => {
+        modal.classList.add("hidden");
+      }, 300);
+    }
+
+    function showNextLightboxImage() {
+      if (!galleryImages.length) return;
+      currentLightboxIndex = (currentLightboxIndex + 1) % galleryImages.length;
+      updateLightboxContent();
+    }
+
+    function showPrevLightboxImage() {
+      if (!galleryImages.length) return;
+      currentLightboxIndex = (currentLightboxIndex - 1 + galleryImages.length) % galleryImages.length;
+      updateLightboxContent();
+    }
+
+    // Global Key Listener for Lightbox Nav
+    document.addEventListener("keydown", (e) => {
+      const modal = document.getElementById("lightboxModal");
+      if (!modal || modal.classList.contains("hidden")) return;
+
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") showPrevLightboxImage();
+      if (e.key === "ArrowRight") showNextLightboxImage();
+    });
+
+    // 4. CHATBOT TOGGLE & MESSAGE HANDLING
     function toggleChatbot() {
       const chatBox = document.getElementById('chatBox');
       if (chatBox) chatBox.classList.toggle('hidden');
     }
 
     function handleChatKeyPress(event) {
-      if (event.key === 'Enter') {
-        sendChatMessage();
-      }
+      if (event.key === 'Enter') sendChatMessage();
     }
 
     function escapeHtml(text) {
@@ -286,13 +541,12 @@
       } catch (error) {
         const typingElem = document.getElementById(typingId);
         if (typingElem) typingElem.remove();
-
         msgs.innerHTML += `<div class="bg-red-100 text-red-700 p-2 rounded max-w-[85%] text-xs mb-2">Network issue. Please connect directly via WhatsApp.</div>`;
       }
       msgs.scrollTop = msgs.scrollHeight;
     }
 
-    // 4. CONSULTATION FORM HANDLER
+    // 5. CONSULTATION FORM HANDLER
     async function handleFormSubmit(event) {
       event.preventDefault();
       const nameInput = document.getElementById('userName');
@@ -329,119 +583,94 @@
         submitBtn.innerText = "Submit Consultation";
       }
     }
-    // CONFIGURATION: Set your repository credentials
-    const REPO_OWNER = "bosskps"; 
-    const REPO_NAME = "aprajita-legal-web"; 
-    const GITHUB_ARTICLES_API = `https://api.github.com/repos/${bosskps}/${aprajita-legal-web}/contents/content/articles`;
 
-    // Helper: Separate YAML Metadata from Markdown Body
+    // 6. ARTICLES PARSER & FETCH ENGINE
     function parseMarkdownFile(rawContent) {
-    const frontMatterPattern = /^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/;
-    const match = rawContent.match(frontMatterPattern);
+      const frontMatterPattern = /^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/;
+      const match = rawContent.match(frontMatterPattern);
 
-    if (!match) {
-      return {
-        meta: {},
-        htmlBody: typeof marked !== 'undefined' ? marked.parse(rawContent) : rawContent
-      };
+      if (!match) {
+        return {
+          meta: {},
+          htmlBody: typeof marked !== 'undefined' ? marked.parse(rawContent) : rawContent
+        };
+      }
+
+      const yamlString = match[1];
+      const markdownString = match[2];
+      const meta = jsyaml.load(yamlString) || {};
+      const htmlBody = marked.parse(markdownString);
+
+      return { meta, htmlBody };
     }
 
-    const yamlString = match[1];
-    const markdownString = match[2];
-
-    const meta = jsyaml.load(yamlString) || {};
-    const htmlBody = marked.parse(markdownString);
-
-    return { meta, htmlBody };
-    }
-
-    // Main Runner: Fetch files from GitHub, parse, and render HTML cards
     async function loadPublishedArticles() {
-    const feedContainer = document.getElementById("articlesFeed");
-    const loadingIndicator = document.getElementById("articlesLoading");
+      const feedContainer = document.getElementById("articlesFeed");
+      const loadingIndicator = document.getElementById("articlesLoading");
 
-    try {
-      const response = await fetch(GITHUB_ARTICLES_API);
-    
-      if (response.status === 404) {
-        if (loadingIndicator) loadingIndicator.innerText = "No published articles available yet.";
-        return;
-      }
+      try {
+        const response = await fetch(GITHUB_ARTICLES_API);
 
-      if (!response.ok) {
-        throw new Error(`HTTP Error: ${response.status}`);
-      }
+        if (response.status === 404) {
+          if (loadingIndicator) loadingIndicator.innerText = "No published articles available yet.";
+          return;
+        }
 
-      const files = await response.json();
-      const markdownFiles = files.filter(f => f.name.endsWith(".md"));
+        if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
 
-      if (markdownFiles.length === 0) {
-        if (loadingIndicator) loadingIndicator.innerText = "No published articles found.";
-        return;
-      }
+        const files = await response.json();
+        const markdownFiles = files.filter(f => f.name.endsWith(".md"));
 
-      // Download content of all markdown files concurrently
-      const fileFetchPromises = markdownFiles.map(async (file) => {
-      const res = await fetch(file.download_url);
-      const text = await res.text();
-      return parseMarkdownFile(text);
-      });
+        if (markdownFiles.length === 0) {
+          if (loadingIndicator) loadingIndicator.innerText = "No published articles found.";
+          return;
+        }
 
-      const parsedArticles = await Promise.all(fileFetchPromises);
+        const fileFetchPromises = markdownFiles.map(async (file) => {
+          const res = await fetch(file.download_url);
+          const text = await res.text();
+          return parseMarkdownFile(text);
+        });
 
-      // Sort by publication date (Newest First)
-      parsedArticles.sort((a, b) => {
-      const dateA = new Date(a.meta.date || 0);
-      const dateB = new Date(b.meta.date || 0);
-      return dateB - dateA;
-      });
+        const parsedArticles = await Promise.all(fileFetchPromises);
 
-      // Clear loading message
-      feedContainer.innerHTML = "";
+        parsedArticles.sort((a, b) => new Date(b.meta.date || 0) - new Date(a.meta.date || 0));
+        feedContainer.innerHTML = "";
 
-      // Generate HTML layout for each article
-      parsedArticles.forEach(article => {
-      const { meta, htmlBody } = article;
-      
-      const title = meta.title || "Legal Update";
-      const author = meta.author || "Advocate";
-      const imageSrc = meta.image || "";
-      const pubDate = meta.date 
-        ? new Date(meta.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' })
-        : "";
+        parsedArticles.forEach(article => {
+          const { meta, htmlBody } = article;
+          const title = meta.title || "Legal Update";
+          const author = meta.author || "Advocate";
+          const imageSrc = meta.image || "";
+          const pubDate = meta.date ? new Date(meta.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' }) : "";
 
-      const card = document.createElement("div");
-      card.className = "bg-slate-50 border border-slate-200 rounded-lg overflow-hidden shadow-sm flex flex-col justify-between";
-
-      card.innerHTML = `
-        <div>
-          ${imageSrc ? `<img src="${imageSrc}" alt="${title}" class="w-full h-44 object-cover">` : ''}
-          <div class="p-5">
-            <div class="flex justify-between items-center text-[10px] uppercase tracking-wider text-amber-700 font-bold mb-2">
-              <span>${author}</span>
-              <span class="text-slate-400 font-normal">${pubDate}</span>
+          const card = document.createElement("div");
+          card.className = "bg-slate-50 border border-slate-200 rounded-lg overflow-hidden shadow-sm flex flex-col justify-between";
+          card.innerHTML = `
+            <div>
+              ${imageSrc ? `<img src="${imageSrc}" alt="${title}" class="w-full h-44 object-cover">` : ''}
+              <div class="p-5">
+                <div class="flex justify-between items-center text-[10px] uppercase tracking-wider text-amber-700 font-bold mb-2">
+                  <span>${author}</span>
+                  <span class="text-slate-400 font-normal">${pubDate}</span>
+                </div>
+                <h3 class="font-bold text-slate-900 text-lg serif-font mb-3">${title}</h3>
+                <div class="text-xs text-slate-600 leading-relaxed space-y-2 prose">
+                  ${htmlBody}
+                </div>
+              </div>
             </div>
-            <h3 class="font-bold text-slate-900 text-lg serif-font mb-3">${title}</h3>
-            <div class="text-xs text-slate-600 leading-relaxed space-y-2 prose">
-              ${htmlBody}
-            </div>
-          </div>
-        </div>
-      `;
-
-      feedContainer.appendChild(card);
-      });
+          `;
+          feedContainer.appendChild(card);
+        });
 
       } catch (err) {
         if (loadingIndicator) {
           loadingIndicator.className = "col-span-full text-center py-4 text-xs text-red-600 font-bold";
           loadingIndicator.innerText = `Unable to load legal articles (${err.message}).`;
-          }
         }
       }
-
-      // Execute fetching once DOM is ready
-      window.addEventListener("DOMContentLoaded", loadPublishedArticles);
+    }
   </script>
 </body>
 </html>
