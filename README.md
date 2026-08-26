@@ -1,6 +1,6 @@
-# ⚖️ Aparajita Legal - AI-Powered Legal Intake & Portal
+# ⚖️ Aprajita Legal Associates - AI-Powered Legal Intake & Portal
 
-A production web portal engineered for **Aparajita Legal** (`aparajitalegal.in`). This system features static frontend architecture, Bar Council of India (BCI) Rule 36 compliance gating, a serverless cloud backend, and an **Agentic AI Legal Intake Triage Engine**.
+A production web portal engineered for **Aprajita Legal Associates** (`aparajitalegal.in`). This system features static frontend architecture, Bar Council of India (BCI) Rule 36 compliance gating, a serverless cloud backend, and an **Agentic AI Legal Intake Triage Engine**.
 
 ## 🚀 Key Features
 
@@ -24,7 +24,7 @@ A production web portal engineered for **Aparajita Legal** (`aparajitalegal.in`)
 
 ```text
 ├── index.html       # Primary UI, Tailwind Layout & BCI Modal
-├── app.js           # Client-side AI Triage Engine & API Submit Handler
+    ├── app.js       # Client-side AI Triage Engine & API Submit Handler
 ├── admin/
 │   ├── index.html   # Decap CMS Dashboard Entry
 │   └── config.yml   # CMS Git-Backend Settings
